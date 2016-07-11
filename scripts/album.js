@@ -28,6 +28,21 @@ var albumMarconi = {
     ]
 };
 
+var albumSam = {
+    title: 'Sam\'s Album',
+    artist: 'Sam Rosenshein',
+    label: 'OWSLA',
+    year: '2016',
+    albumArtUrl: 'assets/images/album_covers/15.png',
+    songs: [
+        { title: 'Uno', duration: '1:11' },
+        { title: 'Dos', duration: '2:22' },
+        { title: 'Tres', duration: '3:33'},
+        { title: 'Cuatro', duration: '4:44' },
+        { title: 'Cinco', duration: '5:55'}
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -39,12 +54,14 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+    
+
 var setCurrentAlbum = function(album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
     
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
@@ -57,9 +74,24 @@ var setCurrentAlbum = function(album) {
     }
 };
 
+
 window.onload = function() {
-    setCurrentAlbum(albumPicasso);
+    var songsArray = [albumPicasso, albumMarconi, albumSam];
+    
+    setCurrentAlbum(songsArray[0]);
+    
+    var albumIndex = 0;
+    
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(songsArray[albumIndex]);
+        albumIndex++;
+        if (albumIndex == songsArray.length){
+            albumIndex = 0;
+        }
+    });
+    
 };
+
 
 
 
