@@ -35,27 +35,16 @@ body.landing {
     position: relative;
     padding: 2rem;
     text-align: center;
-    opacity: .2;
+    opacity: 0;
     -webkit-transform: scaleX(0.9) translateY(3rem);
     -moz-transform: scaleX(0.9) translateY(3rem);
     transform: scaleX(0.9) translateY(3rem);
     -webkit-transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
-    
-    transition: all 1s steps(4, end);
-    
+    transition: all 0.25s ease-in-out;
     -webkit-transition-delay: 0.2s;
     -moz-transition-delay: 0.2s;
     transition-delay: 0.2s;
-}
-
-.point:hover {
-    width: 300px;
-    height 600px;
-    background-color: rgba(0,0,0,.5);
-    border: red 3px dashed;
-    opacity: 1;
-    font-size: 12px;
 }
 
 .point .point-title {
